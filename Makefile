@@ -1,14 +1,23 @@
-
+CC = gcc
+CFLAGS = -Wall -c -o $@
 all: main
 
-main: main.o graph.o 3d.o
-	gcc main.o graph.o 3d.o -lSDL2 -o main
-
-main.o: main.c
-	gcc main.c -c -o main.o -Wall
-
-graph.o: graph.c
-	gcc graph.c -c -o graph.o -Wall
+main: 3d.o list.o graph.o main.o
+	gcc $^ -lSDL2 -lm -o $@
 
 3d.o: 3d.c
-	gcc 3d.c -c -o 3d.o -Wall
+	gcc $^ $(CFLAGS)
+
+list.o: list.c
+	gcc $^ $(CFLAGS)
+
+graph.o: graph.c
+	gcc $^ $(CFLAGS)
+
+main.o: main.c
+	gcc $^  $(CFLAGS)
+
+.PHONY: clean
+clean:
+	rm -f *.o
+	rm -f main
