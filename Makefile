@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -c -o $@
-all: main
+all: 3dgraph
 
-main: 3d.o list.o graph.o main.o
+3dgraph: 3d.o list.o graph.o main.o
 	gcc $^ -lSDL2 -lm -o $@
 
 3d.o: 3d.c

@@ -17,5 +17,6 @@ void clear(uint32_t col);
 int graph_process_events();
 void graph_close();
 void delay(int ms);
+void commit();
 
 #endif

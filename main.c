@@ -3,7 +3,7 @@
 #include <time.h>
 #include <stdio.h>
 
-
+#define TM_DELAY 100
 
 int main(int argc, char* argv[]) {
     clock_t t1 = clock();
@@ -18,7 +18,8 @@ int main(int argc, char* argv[]) {
 		if (graph_process_events() < 0)
             break;
         t2 = clock();
-        elapsed = (float)(t2 - t1)/(float)CLOCKS_PER_SEC;
+        clock_t diff = (t2 - t1);
+        elapsed = (float)diff/(float)CLOCKS_PER_SEC;
 
         t1 = clock();
         delay(10);
