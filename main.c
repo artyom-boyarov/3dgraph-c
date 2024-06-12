@@ -7,7 +7,7 @@
 
 int main(int argc, char* argv[]) {
     clock_t t1 = clock();
-	if (graph_init(WIDTH, HEIGHT) < 0)
+	if (graph_init(WIDTH, HEIGHT, "3D Graphics") < 0)
         return 1;
 
     init();

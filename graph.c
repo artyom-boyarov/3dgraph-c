@@ -12,16 +12,15 @@ void swap(int* a, int* b) {
 
 #define GET_COL(col)  (col >> 24), (col >> 16) & 0xFF, (col >> 8) & 0xFF, col & 0xFF
 
-int graph_init(int width, int height) {
+int graph_init(int width, int height, const char* window_name) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't initialize SDL");
 		return -1;
 	}
 
-	if (SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_RESIZABLE, &window, &renderer) < 0) {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Could not create window and renderer");
-		return -2;
-    }
+	window = SDL_CreateWindow(window_name, 0,0,width, height, SDL_WINDOW_RESIZABLE);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
     return 0;
 }
 
